@@ -1,2 +1,2 @@
 # misc
-Just some random stuff which doesn't fit into a repository
+Just some random stuff which. Some should not be used it...
