@@ -1,10 +1,5 @@
 #!/usr/bin/env bash
 
-tput smcup
-tput bold
-tput civis
-trap 'tput rmcup; tput cnorm; rm -f /tmp/ssh-mon/*' EXIT
-
    BG_BLACK="$(tput setab 0)"
     BG_BLUE="$(tput setab 4)"
 
@@ -13,6 +8,8 @@ trap 'tput rmcup; tput cnorm; rm -f /tmp/ssh-mon/*' EXIT
    FG_GREEN="$(tput setaf 2)"
   FG_YELLOW="$(tput setaf 3)"
    FG_WHITE="$(tput setaf 7)"
+
+screen_title="SSH_MON"
 
 SSH_OPTS=(
     -o BatchMode=yes
@@ -29,9 +26,32 @@ SSH_FLAGS=(
  "-l ForceLogin2Fail"
 )
 
-#
-# Usage/Help message
-#
+function init_screen() {
+
+  tput smcup
+  tput bold
+  tput civis
+
+}
+
+function restore_screen() {
+
+  tput rmcup
+  tput cnorm
+
+}
+
+function clean_up() {
+
+  rm -f /tmp/ssh-mon/*
+
+}
+
+function finish() {
+
+  clean_up
+  restore_screen
+}
 
 function usage() {
 
@@ -42,11 +62,6 @@ cat << EOF
 EOF
 
 }
-
-if [[ -z $1 || $1 == "--help" ]]; then
-  usage
-  exit 1;
-fi
 
 function check_daemon() {
 
@@ -66,14 +81,20 @@ function check_daemon() {
 
     done
 
-  sleep 1
+    sleep 1
 
-done
-
+  done
 
 }
 
-screen_title="SSH_MON"
+if [[ -z $1 || $1 == "--help" ]]; then
+  usage
+  exit 1
+fi
+
+trap finish EXIT
+
+init_screen
 
 check_daemon "$@" &
 DAEMON_PID="$!"
@@ -95,6 +116,11 @@ while true; do
 
   tput cup $(( screen_lines )) 0
   tput el
+
+  #
+  # Check if monitoring process is still running in the background
+  #
+
   if kill -s 0 ${DAEMON_PID} &>/dev/null; then
     echo -n " Monitoring running... ( PID: ${DAEMON_PID} )"
    else
@@ -123,11 +149,10 @@ while true; do
       echo -n " $host"
     fi
 
-
   done
 
   sleep 1
 
 done
 
-tput rmcup
+finish
