@@ -9,7 +9,7 @@
   FG_YELLOW="$(tput setaf 3)"
    FG_WHITE="$(tput setaf 7)"
 
-screen_title="SSH_MON"
+SCREEN_TITLE="SSH_MON"
 
 SSH_OPTS=(
     -o BatchMode=yes
@@ -96,8 +96,17 @@ trap finish EXIT
 
 init_screen
 
+#
+# Run the monitoring function in the background
+# and remember its PID for checking
+#
+
 check_daemon "$@" &
 DAEMON_PID="$!"
+
+#
+# MAIN
+#
 
 while true; do
 
@@ -112,7 +121,7 @@ while true; do
   echo -n ${BG_BLUE}${FG_WHITE}
   tput el
   tput cup 0 1
-  echo "$screen_title"
+  echo "${SCREEN_TITLE}"
 
   tput cup $(( screen_lines )) 0
   tput el
