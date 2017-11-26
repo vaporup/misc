@@ -1,0 +1,77 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+#  +--------------------------------------------------------+
+#  | Title        : ldif2rec                                |
+#  |                                                        |
+#  | Description  : Converts LDIF format to recutils format |
+#  |                                                        |
+#  | Author       : Sven Wick <sven.wick@gmx.de>            |
+#  +--------------------------------------------------------+
+
+import sys
+import argparse
+from base64 import b64decode
+
+
+if __name__ == '__main__':
+
+  if sys.stdin.isatty():
+
+    parser = argparse.ArgumentParser(description='Converts LDIF format to recutils format')
+    parser.add_argument('file', metavar='FILE', help='file to read, if empty, stdin is used')
+
+    args = parser.parse_args()
+
+    if args.file:
+      f = open(args.file)
+
+  else:
+
+    f = sys.stdin
+
+  data = f.read()
+
+  #
+  # sanitize file
+  #
+
+  #
+  # join multiple lines and strip \r
+  #
+  # e.g.
+  #
+  # sambaPasswordHistory: 000000000000000000000000000000000000000000000000000000
+  #  0000000000
+  #
+  # gets converted to:
+  # 
+  # sambaPasswordHistory: 0000000000000000000000000000000000000000000000000000000000000000
+  # 
+  
+  f = data.replace("\r", "").replace("\n ", "")
+
+  #
+  # decode base64
+  #
+  # e.g.
+  #
+  # sn:: QsO2aG1l
+  #
+  # gets converted to:
+  #
+  # sn: Böhme
+  
+  for line in f.split("\n"):
+    if ":" in line:
+      key, value = line.split(": ", 1)
+      if key[-1] == ":":
+        # double colon indicates base64
+        value = b64decode(value).replace("\n", "") # replace newlines in values
+        key = key[:-1]
+
+      print "%s: %s" % ( key, value )
+      continue
+
+    print line
+
