@@ -67,7 +67,8 @@ if __name__ == '__main__':
       key, value = line.split(": ", 1)
       if key[-1] == ":":
         # double colon indicates base64
-        value = b64decode(value).replace("\n", "") # replace newlines in values
+        value = b64decode(value).replace("\n", "\n+ ") # replace newlines in values with "+ "
+                                                       # https://www.gnu.org/software/recutils/manual/recutils.html#Fields
         key = key[:-1]
 
       print "%s: %s" % ( key, value )
