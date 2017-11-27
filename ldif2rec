@@ -44,10 +44,10 @@ if __name__ == '__main__':
   #  0000000000
   #
   # gets converted to:
-  # 
+  #
   # sambaPasswordHistory: 0000000000000000000000000000000000000000000000000000000000000000
-  # 
-  
+  #
+
   f = data.replace("\r", "").replace("\n ", "")
 
   #
@@ -61,7 +61,7 @@ if __name__ == '__main__':
   # gets converted to:
   #
   # sn: Böhme
-  
+
   for line in f.split("\n"):
     if ":" in line:
       key, value = line.split(": ", 1)
@@ -75,4 +75,3 @@ if __name__ == '__main__':
       continue
 
     print line
-
