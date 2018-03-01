@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-#  +--------------------------------------------------------+
-#  | Title       : ldif2rec                                |
-#  | Description : Converts LDIF format to recutils format |
-#  | Author      : Sven Wick <sven.wick@gmx.de>            |
-#  +--------------------------------------------------------+
+#  +------------------------------------------------+
+#  | Title       : ldif2rec                         |
+#  | Description : Converts LDIF to recutils format |
+#  | Author      : Sven Wick <sven.wick@gmx.de>     |
+#  +------------------------------------------------+
 
 import sys
 import re
