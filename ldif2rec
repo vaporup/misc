@@ -10,6 +10,7 @@
 #  +--------------------------------------------------------+
 
 import sys
+import re
 import argparse
 from base64 import b64decode
 
@@ -47,31 +48,56 @@ if __name__ == '__main__':
   #
   # sambaPasswordHistory: 0000000000000000000000000000000000000000000000000000000000000000
   #
+  # or
+  #
+  # o:: SU1EIEluc3RpdHV0IGbDvHIgTWVkaXppbmlzY2hlIERpYWdub3N0aWsgQmVybGluLVBvdHNk
+  #  YW0gR2JSIElNRCBCZXJsaW4gTVZaIC8gQUNDMiAvICAxODI=
+  #
+  # becomes
+  #
+  # o:: SU1EIEluc3RpdHV0IGbDvHIgTWVkaXppbmlzY2hlIERpYWdub3N0aWsgQmVybGluLVBvdHNkYW0gR2JSIElNRCBCZXJsaW4gTVZaIC8gQUNDMiAvICAxODI=
+  #
+  # so it can be properly base64_decoded
+  #
 
   f = data.replace("\r", "").replace("\n ", "")
 
-  #
-  # decode base64
-  #
-
-  # e.g.
-  #
-  # sn:: QsO2aG1l
-  #
-  # gets converted to:
-  #
-  # sn: Böhme
-
   for line in f.split("\n"):
-    if ":" in line:
-      key, value = line.split(": ", 1)
-      if key[-1] == ":":
-        # double colon indicates base64
-        value = b64decode(value).replace("\n", "\n+ ") # replace newlines in values with "+ "
-                                                       # https://www.gnu.org/software/recutils/manual/recutils.html#Fields
-        key = key[:-1]
 
+    #
+    # find lines with normal data
+    #
+
+    match = re.search(r"^([a-zA-Z%][a-zA-Z0-9_]*):\s(.*)", line)
+
+    if match:
+      key = match.group(1)
+      value = match.group(2)
       print "%s: %s" % ( key, value )
       continue
+
+    #
+    # find base64 encoded data and base64_decode it (double colon indicates base64)
+    #
+    # e.g.
+    #
+    # sn:: QsO2aG1l
+    #
+    # gets converted to:
+    #
+    # sn: Böhme
+
+    match = re.search(r"^([a-zA-Z%][a-zA-Z0-9_]*)::\s(.*)", line)
+
+    if match:
+      key = match.group(1)
+      value = b64decode(match.group(2)).replace("\n", "\n+ ") # replace newlines in values with "+ "
+                                                              # https://www.gnu.org/software/recutils/manual/recutils.html#Fields
+      print "%s: %s" % ( key, value )
+      continue
+
+    #
+    # output any other line like comments etc...
+    #
 
     print line
