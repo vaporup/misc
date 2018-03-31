@@ -1,0 +1,119 @@
+#!/usr/bin/env python
+
+import sys
+import os
+import argparse
+from datetime import datetime, timedelta
+
+import gi
+gi.require_version('Gcr', '3')
+
+from gi.repository import GLib
+from gi.repository import Gcr
+
+class color:
+   PURPLE    = '\033[95m'
+   CYAN      = '\033[96m'
+   DARKCYAN  = '\033[36m'
+   BLUE      = '\033[94m'
+   GREEN     = '\033[92m'
+   YELLOW    = '\033[93m'
+   RED       = '\033[91m'
+   BOLD      = '\033[1m'
+   UNDERLINE = '\033[4m'
+   END       = '\033[0m'
+
+parser = argparse.ArgumentParser(description='Get information about certificates')
+parser.add_argument('filenames', metavar='FILE', type=str, nargs='+', help='a file which holds a cert')
+parser.add_argument('-v', '--verbose', dest="verbose", action='store_true', help='show more cert data')
+parser.add_argument('--expires', type=int, default=0, help='show which certs expire within these number of days')
+
+args = parser.parse_args()
+
+present = datetime.now()
+
+def parsed_callback(data):
+
+  parsed_data = data.get_parsed()
+  der_data = parsed_data.get_data()
+
+  cert_format = parsed_data.get_format()
+
+  cert_data = Gcr.SimpleCertificate.new(der_data)
+
+  p = cert_data.props
+
+  print
+
+  if cert_format.value_name == "GCR_FORMAT_DER_CERTIFICATE_X509":
+
+    expires = datetime.strptime( str(p.expiry.get_year()) + "-" + str(p.expiry.get_month().real).zfill(02) + "-" + str(p.expiry.get_day()).zfill(02) , '%Y-%m-%d' )
+    issued  = datetime.strptime( str(cert_data.get_issued_date().get_year()) + "-" + str(cert_data.get_issued_date().get_month().real).zfill(02) + "-" + str(cert_data.get_issued_date().get_day()).zfill(02) , '%Y-%m-%d' )
+
+    future = present + timedelta(days=args.expires)
+
+    if future >= expires:
+      if present >= expires:
+        print color.RED
+      else:
+        print color.YELLOW
+    else:
+      print color.GREEN
+
+    print "SUBJECT:".rjust(20) , p.subject
+
+    if args.verbose:
+      print "SUBJECT_NAME:".rjust(20) , cert_data.get_subject_name()
+      print "SUBJECT_CN:".rjust(20)   , cert_data.get_subject_cn()
+      print "SUBJECT_DN:".rjust(20)   , cert_data.get_subject_dn()
+      print "SUBJECT_C:".rjust(20)     , cert_data.get_subject_part("C")
+      print "SUBJECT_O:".rjust(20)     , cert_data.get_subject_part("O")
+
+    print "ISSUER:".rjust(20)  , p.issuer
+
+    if args.verbose:
+      print "ISSUER_NAME:".rjust(20)  , cert_data.get_issuer_name()
+      print "ISSUER_CN:".rjust(20)    , cert_data.get_issuer_cn()
+      print "ISSUER_DN:".rjust(20)    , cert_data.get_issuer_dn()
+      print "ISSUER_C:".rjust(20)     , cert_data.get_issuer_part("C")
+      print "ISSUER_O:".rjust(20)     , cert_data.get_issuer_part("O")
+
+    print "ISSUED:".rjust(20)  , issued.ctime()
+    print "EXPIRES:".rjust(20) , expires.ctime()
+    print "FORMAT:".rjust(20)  , cert_format.value_name  # cert_format.value_nick
+
+    if args.verbose:
+      print "FINGERPRINT_MD5:".rjust(20)          , cert_data.get_fingerprint_hex(GLib.ChecksumType.MD5)
+      print "FINGERPRINT_SHA1:".rjust(20)          , cert_data.get_fingerprint_hex(GLib.ChecksumType.SHA1)
+      print "FINGERPRINT_SHA256:".rjust(20)          , cert_data.get_fingerprint_hex(GLib.ChecksumType.SHA256)
+      print "CRITICAL:".rjust(20) , cert_data.get_basic_constraints()[0]
+      print "IS_CA:".rjust(20) , cert_data.get_basic_constraints()[1]
+      print "MAX_PATH_LENGTH:".rjust(20) , cert_data.get_basic_constraints()[2]
+      print "KEY_SIZE:".rjust(20)     , cert_data.get_key_size()
+      print "SERIAL_NUMBER:".rjust(20) , cert_data.get_serial_number_hex()
+
+    print color.END,
+
+  else:
+    print color.END
+    print "FORMAT:".rjust(20) , cert_format.value_name
+
+print
+
+for cert_file in args.filenames:
+
+  with open(cert_file, 'r') as a_cert_file:
+    cert = a_cert_file.read()
+    parser = Gcr.Parser.new()
+    parsed_id = parser.connect("parsed", parsed_callback)
+
+    print color.BOLD + " " + os.path.basename(cert_file) + color.END,
+
+    try:
+      parser.parse_data(cert)
+    except GLib.Error as e:
+      print color.END
+      print color.END
+      print color.YELLOW, "ERROR:".rjust(19), e.message, color.END
+
+    print
