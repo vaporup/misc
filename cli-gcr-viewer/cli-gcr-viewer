@@ -11,6 +11,8 @@ gi.require_version('Gcr', '3')
 from gi.repository import GLib
 from gi.repository import Gcr
 
+TXT_ADJUST = 20
+
 class color:
    PURPLE    = '\033[95m'
    CYAN      = '\033[96m'
@@ -60,43 +62,43 @@ def parsed_callback(data):
     else:
       print color.GREEN
 
-    print "Subject:".rjust(20) , p.subject
+    print "Subject:".rjust(TXT_ADJUST) , p.subject
 
     if args.verbose:
-      print "Subject_Name:".rjust(20) , cert_data.get_subject_name()
-      print "Subject_CN:".rjust(20)   , cert_data.get_subject_cn()
-      print "Subject_DN:".rjust(20)   , cert_data.get_subject_dn()
-      print "Subject_C:".rjust(20)     , cert_data.get_subject_part("C")
-      print "Subject_O:".rjust(20)     , cert_data.get_subject_part("O")
+      print "Subject_Name:".rjust(TXT_ADJUST) , cert_data.get_subject_name()
+      print "Subject_CN:".rjust(TXT_ADJUST)   , cert_data.get_subject_cn()
+      print "Subject_DN:".rjust(TXT_ADJUST)   , cert_data.get_subject_dn()
+      print "Subject_C:".rjust(TXT_ADJUST)    , cert_data.get_subject_part("C")
+      print "Subject_O:".rjust(TXT_ADJUST)    , cert_data.get_subject_part("O")
 
-    print "Issuer:".rjust(20)  , p.issuer
-
-    if args.verbose:
-      print "Issuer_Name:".rjust(20)  , cert_data.get_issuer_name()
-      print "Issuer_CN:".rjust(20)    , cert_data.get_issuer_cn()
-      print "Issuer_DN:".rjust(20)    , cert_data.get_issuer_dn()
-      print "Issuer_C:".rjust(20)     , cert_data.get_issuer_part("C")
-      print "Issuer_O:".rjust(20)     , cert_data.get_issuer_part("O")
-
-    print "Issued:".rjust(20)  , issued.ctime()
-    print "Expires:".rjust(20) , expires.ctime()
-    print "Format:".rjust(20)  , cert_format.value_name  # cert_format.value_nick
+    print "Issuer:".rjust(TXT_ADJUST) , p.issuer
 
     if args.verbose:
-      print "Fingerprint_MD5:".rjust(20)          , cert_data.get_fingerprint_hex(GLib.ChecksumType.MD5)
-      print "Fingerprint_SHA1:".rjust(20)          , cert_data.get_fingerprint_hex(GLib.ChecksumType.SHA1)
-      print "Fingerprint_SHA256:".rjust(20)          , cert_data.get_fingerprint_hex(GLib.ChecksumType.SHA256)
-      print "Critical:".rjust(20) , cert_data.get_basic_constraints()[0]
-      print "Is_CA:".rjust(20) , cert_data.get_basic_constraints()[1]
-      print "Max_Path_Length:".rjust(20) , cert_data.get_basic_constraints()[2]
-      print "Key_Size:".rjust(20)     , cert_data.get_key_size()
-      print "Serial_Number:".rjust(20) , cert_data.get_serial_number_hex()
+      print "Issuer_Name:".rjust(TXT_ADJUST)  , cert_data.get_issuer_name()
+      print "Issuer_CN:".rjust(TXT_ADJUST)    , cert_data.get_issuer_cn()
+      print "Issuer_DN:".rjust(TXT_ADJUST)    , cert_data.get_issuer_dn()
+      print "Issuer_C:".rjust(TXT_ADJUST)     , cert_data.get_issuer_part("C")
+      print "Issuer_O:".rjust(TXT_ADJUST)     , cert_data.get_issuer_part("O")
+
+    print "Issued:".rjust(TXT_ADJUST)  , issued.ctime()
+    print "Expires:".rjust(TXT_ADJUST) , expires.ctime()
+    print "Format:".rjust(TXT_ADJUST)  , cert_format.value_name  # cert_format.value_nick
+
+    if args.verbose:
+      print "Fingerprint_MD5:".rjust(TXT_ADJUST)    , cert_data.get_fingerprint_hex(GLib.ChecksumType.MD5)
+      print "Fingerprint_SHA1:".rjust(TXT_ADJUST)   , cert_data.get_fingerprint_hex(GLib.ChecksumType.SHA1)
+      print "Fingerprint_SHA256:".rjust(TXT_ADJUST) , cert_data.get_fingerprint_hex(GLib.ChecksumType.SHA256)
+      print "Critical:".rjust(TXT_ADJUST)           , cert_data.get_basic_constraints()[0]
+      print "Is_CA:".rjust(TXT_ADJUST)              , cert_data.get_basic_constraints()[1]
+      print "Max_Path_Length:".rjust(TXT_ADJUST)    , cert_data.get_basic_constraints()[2]
+      print "Key_Size:".rjust(TXT_ADJUST)           , cert_data.get_key_size()
+      print "Serial_Number:".rjust(TXT_ADJUST)      , cert_data.get_serial_number_hex()
 
     print color.END,
 
   else:
     print color.END
-    print "Format:".rjust(20) , cert_format.value_name
+    print "Format:".rjust(TXT_ADJUST) , cert_format.value_name
 
 print
 
@@ -117,6 +119,6 @@ for cert_file in args.filenames:
     except GLib.Error as e:
       print color.END
       print color.END
-      print color.YELLOW, "Error:".rjust(19), e.message, color.END
+      print color.YELLOW, "Error:".rjust(TXT_ADJUST - 1), e.message, color.END
 
     print
