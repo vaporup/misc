@@ -26,7 +26,7 @@ class color:
 parser = argparse.ArgumentParser(description='Get information about certificates')
 parser.add_argument('filenames', metavar='FILE', type=str, nargs='+', help='a file which holds a cert')
 parser.add_argument('-v', '--verbose', dest="verbose", action='store_true', help='show more cert data')
-parser.add_argument('--expires', type=int, default=0, help='show which certs expire within these number of days')
+parser.add_argument('--expires', type=int, default=30, help='show which certs expire within these number of days (default: 30)')
 
 args = parser.parse_args()
 
@@ -101,6 +101,9 @@ def parsed_callback(data):
 print
 
 for cert_file in args.filenames:
+
+  if os.path.isdir(cert_file):
+    continue
 
   with open(cert_file, 'r') as a_cert_file:
     cert = a_cert_file.read()
