@@ -19,4 +19,5 @@ while read line; do
   printf "%2i  %s\n" "$counter" "$line"
   ((counter++))
 
-done < <(ssh -v "${SSH_OPTS[@]}" ForceLogin2Fail@$1 2>&1 | awk '/Authenticating to/ { print $4 }')
+done < <(ssh -v "${SSH_OPTS[@]}" ForceLogin2Fail@$1 2>&1 | awk '/Authenticating to/ { print $4 }
+                                                                /Could not resolve/ { print $0 }')
