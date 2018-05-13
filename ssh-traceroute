@@ -1,12 +1,22 @@
 #!/usr/bin/env bash
+#
+# Default SSH Options
+#
+
+SSH_OPTS=(
+    -o BatchMode=yes
+    -o CheckHostIP=no
+    -o StrictHostKeyChecking=no
+    -o HashKnownHosts=no
+)
 
 counter=1
 
-printf "ssh-traceroute to $1\n"
+echo "SSHTRACEROUTE to ${1}"
 
 while read line; do
 
   printf "%2i  %s\n" "$counter" "$line"
   ((counter++))
 
-done < <(ssh -v -o BatchMode=yes ForceLogin2Fail@$1 2>&1 | awk '/Authenticating to/ { print $4 }')
+done < <(ssh -v "${SSH_OPTS[@]}" ForceLogin2Fail@$1 2>&1 | awk '/Authenticating to/ { print $4 }')
