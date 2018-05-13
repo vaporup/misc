@@ -8,6 +8,7 @@ SSH_OPTS=(
     -o CheckHostIP=no
     -o StrictHostKeyChecking=no
     -o HashKnownHosts=no
+    -o ConnectTimeout=3
 )
 
 counter=1
@@ -20,4 +21,4 @@ while read line; do
   ((counter++))
 
 done < <(ssh -v "${SSH_OPTS[@]}" ForceLogin2Fail@$1 2>&1 | awk '/Authenticating to/ { print $4 }
-                                                                /Could not resolve/ { print $0 }')
+                                                                /^ssh:/             { print $0 }')
