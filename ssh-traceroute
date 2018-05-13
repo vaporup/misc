@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+ssh -v -o BatchMode=yes ForceLogin2Fail@$1 2>&1  | grep 'Authenticating to' | awk '{print $4}' | awk -F: '{print $1}'
