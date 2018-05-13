@@ -2,6 +2,8 @@
 
 counter=1
 
+printf "ssh-traceroute to $1\n"
+
 while read line; do
 
   printf "%2i  %s\n" "$counter" "$line"
