@@ -44,7 +44,7 @@ List of movies about [MK](https://www.youtube.com/watch?v=7Tjz-kfwafk). Look for
 | 1990 | Total Recall                          | https://www.imdb.com/title/tt0100802/ | mind games / changing memories                                          |
 | 1986 | Labyrinth                             | https://www.imdb.com/title/tt0091369/ | the inner world of MK Ultra victims                                     |
 | 1985 | Return to Oz                          | https://www.imdb.com/title/tt0089908/ | the inner world of MK Ultra victims                                     |
-| 1984 | Nineteen Eighty-Four                  | https://www.imdb.com/title/tt0087803/ | trauma-based mind control and controlling the masses                    |
+| 1984 | Nineteen Eighty-Four                  | https://www.imdb.com/title/tt0087803/ | trauma / controlling the masses                    |
 | 1983 | Videodrome                            | https://www.imdb.com/title/tt0086541/ | the inner world of MK Ultra victims                                     |
 | 1982 | TRON                                  | https://www.imdb.com/title/tt0084827/ | the mind of a slave is like a computer                                  |
 | 1977 | Telefon                               | https://www.imdb.com/title/tt0076804/ | trigger words work                                                      |
