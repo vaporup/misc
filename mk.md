@@ -40,7 +40,7 @@ List of movies about [MK](https://www.youtube.com/watch?v=7Tjz-kfwafk). Look for
 | 1995 | Twelve Monkeys                        | https://www.imdb.com/title/tt0114746/ |                                                                         |
 | 1992 | Basic Instinct                        | https://www.imdb.com/title/tt0103772/ | sex assassins                                                           |
 | 1992 | The Lawnmower Man                     | https://www.imdb.com/title/tt0104692/ | VR methods for splitting the mind                                       |
-| 1992 | Raising Cain                          | https://www.imdb.com/title/tt0105217/ | multiple personalities / creating generational MK victims               |
+| 1992 | Raising Cain                          | https://www.imdb.com/title/tt0105217/ | multiple personalities          |
 | 1990 | Total Recall                          | https://www.imdb.com/title/tt0100802/ | mind games / changing memories                                          |
 | 1986 | Labyrinth                             | https://www.imdb.com/title/tt0091369/ | the inner world of MK Ultra victims                                     |
 | 1985 | Return to Oz                          | https://www.imdb.com/title/tt0089908/ | the inner world of MK Ultra victims                                     |
