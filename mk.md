@@ -22,7 +22,7 @@ List of movies about [MK](https://www.youtube.com/watch?v=7Tjz-kfwafk). Look for
 | 2005 | The Island                            | https://www.imdb.com/title/tt0399201/ | mind games                                                              |
 | 2004 | The Machinist                         | https://www.imdb.com/title/tt0361862/ |                                                                         |
 | 2004 | The Butterfly Effect                  | https://www.imdb.com/title/tt0289879/ | victims disassociate / memory loss                                      |
-| 2004 | Eternal Sunshine of the Spotless Mind | https://www.imdb.com/title/tt0338013/ | mapping and erasing the humand brain                                    |
+| 2004 | Eternal Sunshine of the Spotless Mind | https://www.imdb.com/title/tt0338013/ | mapping and erasing the human brain                                     |
 | 2004 | Catwoman                              | https://www.imdb.com/title/tt0327554/ | sex kitten programming                                                  |
 | 2003 | Anger Management                      | https://www.imdb.com/title/tt0305224/ | anger against the handler is controlled                                 |
 | 2003 | Oldboy                                | https://www.imdb.com/title/tt0364569/ |                                                                         |
