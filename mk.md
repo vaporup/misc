@@ -36,7 +36,7 @@ List of movies about [MK](https://www.youtube.com/watch?v=7Tjz-kfwafk). Look for
 | 1997 | Lost Highway                          | https://www.imdb.com/title/tt0116922/ |                                                                         |
 | 1997 | Open Your Eyes                        | https://www.imdb.com/title/tt0125659/ | mind games                                                              |
 | 1997 | Conspiracy Theory                     | https://www.imdb.com/title/tt0118883/ | MK Ultra experiments                                                    |
-| 1996 | Primal Fear                           | https://www.imdb.com/title/tt0117381/ | multiple personalities "I'm one of those altar boys (multiple alters)"  |
+| 1996 | Primal Fear                           | https://www.imdb.com/title/tt0117381/ | multiple personalities "altar boy"  |
 | 1995 | Twelve Monkeys                        | https://www.imdb.com/title/tt0114746/ |                                                                         |
 | 1992 | Basic Instinct                        | https://www.imdb.com/title/tt0103772/ | sex assassins                                                           |
 | 1992 | The Lawnmower Man                     | https://www.imdb.com/title/tt0104692/ | VR methods for splitting the mind                                       |
