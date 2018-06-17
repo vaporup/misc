@@ -2,7 +2,7 @@ List of movies about [MK](https://www.youtube.com/watch?v=7Tjz-kfwafk). Look for
 
 | Year | Title                                 | URL                                   | About                                                                   |
 | ---- | ------------------------------------- | ------------------------------------- | ----------------------------------------------------------------------- |
-| 2016 | Rupture                               | https://www.imdb.com/title/tt4578118/ | how they induce trauma to split the mind                                |
+| 2016 | Rupture                               | https://www.imdb.com/title/tt4578118/ | how they use trauma to split the mind                                |
 | 2016 | Split                                 | https://www.imdb.com/title/tt4972582/ | multiple personalities                                                  |
 | 2013 | Upstream Color                        | https://www.imdb.com/title/tt2084989/ | targeted individuals                                                    |
 | 2013 | Under the Skin                        | https://www.imdb.com/title/tt1441395/ | a monitored sex kitten                                                  |
