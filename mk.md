@@ -42,6 +42,7 @@ List of movies about [MK](https://www.youtube.com/watch?v=7Tjz-kfwafk). Look for
 | 1992 | The Lawnmower Man                     | https://www.imdb.com/title/tt0104692/ | VR methods for splitting the mind                                       |
 | 1992 | Raising Cain                          | https://www.imdb.com/title/tt0105217/ | multiple personalities / creating generational MK victims               |
 | 1990 | Total Recall                          | https://www.imdb.com/title/tt0100802/ | mind games / changing memories                                          |
+| 1990 | Jacob's Ladder                        | https://www.imdb.com/title/tt0099871/ |                                                                         |
 | 1986 | Labyrinth                             | https://www.imdb.com/title/tt0091369/ | the inner world of MK Ultra victims                                     |
 | 1985 | Return to Oz                          | https://www.imdb.com/title/tt0089908/ | the inner world of MK Ultra victims                                     |
 | 1984 | Nineteen Eighty-Four                  | https://www.imdb.com/title/tt0087803/ | trauma-based mind control and controlling the masses                    |
