@@ -2,6 +2,7 @@ List of movies about [MK](https://www.youtube.com/watch?v=7Tjz-kfwafk). Look for
 
 | Year | Title                                 | URL                                   | About                                                                   |
 | ---- | ------------------------------------- | ------------------------------------- | ----------------------------------------------------------------------- |
+| 2018 | The Minds of Men                      | https://www.imdb.com/title/tt8747288/ | documentary about mind control experiments                              |
 | 2018 | Distorted                             | https://www.imdb.com/title/tt6143850/ |                                                                         |
 | 2016 | Rupture                               | https://www.imdb.com/title/tt4578118/ | how they induce trauma to split the mind                                |
 | 2016 | Split                                 | https://www.imdb.com/title/tt4972582/ | multiple personalities                                                  |
