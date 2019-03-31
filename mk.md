@@ -10,6 +10,7 @@ List of movies about [MK](https://www.youtube.com/watch?v=7Tjz-kfwafk). Look for
 | 2013 | Under the Skin                        | https://www.imdb.com/title/tt1441395/ | a monitored sex kitten                                                  |
 | 2013 | Oculus                                | https://www.imdb.com/title/tt2388715/ | the inner world of MK Ultra victims                                     |
 | 2013 | Enemy                                 | https://www.imdb.com/title/tt2316411/ |                                                                         |
+| 2011 | Faces in the Crowd                    | https://www.imdb.com/title/tt1536410/ |                                                                         |
 | 2011 | The Skin I live in                    | https://www.imdb.com/title/tt1189073/ |                                                                         |
 | 2011 | Sucker Punch                          | https://www.imdb.com/title/tt0978764/ | victims disassociate                                                    |
 | 2011 | Sound of My Voice                     | https://www.imdb.com/title/tt1748207/ | psychic control                                                         |
