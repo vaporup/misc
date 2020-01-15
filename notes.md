@@ -1,5 +1,13 @@
 # Update Packages
 
+## Debian/Ubuntu
+
+```
+apt-get update
+apt-get upgrade
+apt-get dist-upgrade
+```
+
 ## NetBSD
 
 ```
