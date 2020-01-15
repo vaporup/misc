@@ -2,7 +2,7 @@
 
 ## OpenBSD
 
-``
+```
 pkg_add -uvi
 ```
 
